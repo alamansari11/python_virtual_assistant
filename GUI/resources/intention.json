@@ -1,0 +1,69 @@
+{
+    "intention":[
+        {
+            "pattern":[
+                "hello","hi","wake up","hey","hai"
+            ],
+            "response":[
+                "Hello Sir","How are You sir","hi sir","hi sir I am online sir"
+            ]
+        },
+        {
+            "pattern":[
+                "bye","by","shutdown","exit","close","quit"
+            ],
+            "response":[
+                "Okay sir shutting down","by sir take care","see you later sir"
+            ]
+        },
+        {
+            "pattern":[
+                "how are you","are you fine","are you good","you okay"
+            ],
+            "response":[
+                "Perfectly fine sir","Yes Hope you too","awesome sir"
+            ]
+        },
+        {
+            "pattern":[
+                "what is time","what is the time","tell me time","whats the time","what time it is","kya time hora hai","time batao","what time is it"
+            ],
+            "response":[
+                "time"
+            ]
+        },
+        {
+            "pattern":[
+                "what is today's date","Aaj Kaunsa din hai","Aaj kya tareek hai","what is the date"
+            ],
+            "response":[
+                "date"
+            ]
+        },
+        {
+            "pattern":[
+                "location","what is my location","what's my location","my location"
+            ],
+            "response":[
+                "location"
+            ]
+        },
+        {
+            "pattern":[
+                "take screenshot","take screen shot","please take screenshot","take a screenshot"
+            ],
+            "response":[
+                "screenshot"
+            ]
+        },
+        {
+            "pattern":[
+                "who are you","who made you","tell me about yourself","introduce yourself"
+            ],
+            "response":[
+                "I am Virtual Assistant My developers are Alam Satyam Komal Pranjali"
+            ]
+        }
+
+    ]
+}

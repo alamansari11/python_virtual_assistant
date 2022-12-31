@@ -1,0 +1,83 @@
+<Command>:
+    size_hint_y: None
+    pos_hint: {"right": .98}
+    height: self.texture_size[1]
+    padding: 12,10
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1,
+    canvas.before:
+        Color :
+            rgb: (44/255, 73/255, 102/255, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [22,22,22,22]
+
+
+<Response>:
+    size_hint_y: None
+    pos_hint: {"left": 0.2}
+    height: self.texture_size[1]
+    padding: 12,10
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1,
+    canvas.before:
+        Color :
+            rgb: (7/255, 41/255, 62/255, 1)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [22,22,22,22]
+
+MDScreen :
+    name: "chats"
+    bot_name: bot_name
+    #text_input: text_input
+    chat_list: chat_list
+    BoxLayout:
+        orientation: 'vertical'
+        MDFloatLayout:
+            md_bg_color: 245/255, 245/255, 245/255, 1
+            size_hint_y: .11
+            pos_hint: {"center_y": .95}
+            MDLabel:
+                id: bot_name
+                text: "AI Virtual Assitant"
+                pos_hint: {"center_y": .5}
+                halign: "center"
+                font_name: "Poppins"
+                font_size: "25sp"
+                theme_text_color: "Custom"
+                text_color: 53/255, 56/255, 68/255, 1
+        ScrollView:
+            padding: 10
+            size_hint_y: .77
+            pos_hint: {"center_x": .5, "center_y": .5}
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                padding: 20
+                id: chat_list
+                orientation: 'vertical'
+                size: (root.width, root.height)
+                height: self.minimum_height
+                size_hint: None, None
+                pos_hint: {'top': 10}
+                spacing: 5
+        MDFloatLayout :
+            size_hint: 1, 0.2
+            padding: 10
+            MDIconButton:
+                #ripple_canvas_before: True
+                #ripple_alpha: .8
+                #ripple_color: app.theme_cls.primary_color
+                #ripple_duration_in_slow: 5
+                #ripple_rad_default: 150
+                icon: "microphone"
+                pos_hint: {"center_x": .5, "center_y": .35}
+                user_font_size: "18sp"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                md_bg_color: 1, 178/255, 23/255, 1
+                on_release: app.send()
