@@ -1,3 +1,6 @@
+import time
+import os, sys
+from kivy.resources import resource_add_path, resource_find
 from kivy.config import Config
 from kivy.core.window import Window
 import random
@@ -13,6 +16,9 @@ from modules.input import Input
 from modules.output import Output
 from modules.task import Task
 from kivy.core.clipboard import Clipboard
+from kivy.core.window import Window
+from kivy_deps import sdl2, glew
+from kivymd import hooks_path as kivymd_hooks_path
 
 Config.set('graphics', 'resizable', 0)
 # Config.set('graphics', 'borderless', 1)
@@ -66,7 +72,6 @@ def change_chat_box_size(sentence):
 def check_for_code(command):
     list_code = ['program', 'code', 'python', 'c++', 'java', 'syntax']
     for i in command.split():
-        print(i)
         if i in list_code:
             return True
     return False
@@ -83,7 +88,6 @@ class VirtualAssistant(MDApp):
         global screen_manager
         screen_manager = ScreenManager()
         screen_manager.add_widget(Builder.load_file("chats.kv"))
-        screen_manager.add_widget(Builder.load_file("main.kv"))
         return screen_manager
 
     def basic_functions(self, response):
@@ -92,16 +96,25 @@ class VirtualAssistant(MDApp):
         elif "date" == response:
             return self.task.date()
         elif "screenshot" == response:
+            Window.minimize()
+            time.sleep(3)
             Task().screenshot()
             return "Screenshot taken"
         elif "location" == response:
             return self.task.location()
+        elif "weekday" == response:
+            return self.task.week_day()
+        elif "weather" == response:
+            return self.task.weather_report()
+
 
     def speak_after_some_time(self, dt):
-        print(check_for_code(self.query))
+        # print(check_for_code(self.query))
         if self.open_ai_flag and check_for_code(self.query):
             Output().speak('The answer is copied to your clipboard')
             Clipboard.copy(self.response_data)
+        # elif 'news' in self.query:
+        #     Output.speak('here is your news')
         else:
             Output().speak(self.response_data)
         if "quit" in self.query.split():
@@ -116,10 +129,17 @@ class VirtualAssistant(MDApp):
                     return self.basic_functions(response[0])
                 elif len(response) > 1:
                     return random.choice(response)
-        print(self.query.split())
+        # print(self.query.split())
         if "google" in self.query.split():
             self.task.google(self.query)
             return "here is your search result"
+        elif "shopping" in self.query.split():
+            return self.task.shopping_list(self.query)
+        elif "youtube" in self.query.split() or "play" in self.query.split():
+            self.task.youtube(self.query)
+            return "playing on youtube"
+        elif "news" in self.query.split():
+            return self.task.news(self.query)
         try:
             self.open_ai_flag = True
             return self.task.open_ai(self.query)
@@ -148,8 +168,12 @@ class VirtualAssistant(MDApp):
 
 if __name__ == '__main__':
     LabelBase.register(name="Poppins", fn_regular="Poppins-Regular.ttf", fn_bold="Poppins-SemiBold.ttf")
-
     try:
-        VirtualAssistant().run()
+        if hasattr(sys, '_MEIPASS'):
+            resource_add_path(os.path.join(sys._MEIPASS))
+        app = VirtualAssistant()
+        app.run()
     except Exception as e:
-        print(f'Application error: {e}')
+        print(e)
+        input("Press enter.")
+

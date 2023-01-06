@@ -50,7 +50,7 @@
         },
         {
             "pattern":[
-                "take screenshot","take screen shot","please take screenshot","take a screenshot"
+                "take screenshot","take screen shot","please take screenshot","take a screenshot","screenshot"
             ],
             "response":[
                 "screenshot"
@@ -61,7 +61,25 @@
                 "who are you","who made you","tell me about yourself","introduce yourself"
             ],
             "response":[
-                "I am Virtual Assistant My developers are Alam Satyam Komal Pranjali"
+                "I am Virtual Assistant My developers are Alam Satyam Komal Pranjali",
+                "I'm your virtual assistant developed by Alam Satyam Komal Pranjali , I'm here to help you with anything I can. I'm glad to serve you , Thank you so much for choosing me as your virtual assistant.",
+                "I am friendly Ai helps people to do daily life task easily My developers are Alam, Satyam, Komal, Pranjali"
+            ]
+        },
+        {
+            "pattern":[
+		"which day is it","which day is today","aaj kon sa din hai", "which day","kon sa din hai aaj","day","which day it is today","din","what day it is","what day it is today"
+            ],
+            "response":[
+               "weekday"
+            ]
+        },
+        {
+            "pattern":[
+                "what is the weather today","what is the weather report","what is weather report","weather report","what's weather report","report regarding today's weather","mausam ka hal","mausam kaisa hai","aaj ka mausam kaisa hai","aaj ke mausam ka hal"
+            ],
+            "response":[
+               "weather"
             ]
         }
 

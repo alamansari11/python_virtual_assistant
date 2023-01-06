@@ -69,15 +69,18 @@ MDScreen :
             size_hint: 1, 0.2
             padding: 10
             MDIconButton:
+                id: mic_icon
+                icon: "microphone"
+                size_hint: 0.5, 0.5
                 #ripple_canvas_before: True
                 #ripple_alpha: .8
-                #ripple_color: app.theme_cls.primary_color
+                #ripple_color: 1, 178/255, 23/255, 0.2
                 #ripple_duration_in_slow: 5
                 #ripple_rad_default: 150
-                icon: "microphone"
                 pos_hint: {"center_x": .5, "center_y": .35}
-                user_font_size: "18sp"
+                user_font_size: "25sp"
                 theme_text_color: "Custom"
                 text_color: 1, 1, 1, 1
                 md_bg_color: 1, 178/255, 23/255, 1
+                on_press: self.icon_color = 1, 0, 0, 1
                 on_release: app.send()

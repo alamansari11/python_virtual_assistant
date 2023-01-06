@@ -15,17 +15,19 @@ class Output:
             self.engine.setProperty('voices', self.voices[0].id)
             self.engine.setProperty('rate', 170)
         except Exception as error:
-            print(f"speak_initialization_error: {error}")
+            pass
+            # print(f"speak_initialization_error: {error}")
 
     def speak(self, text):
         try:
-            print('\n')
-            print(f"Speaking: {text}")
+            # print('\n')
+            # print(f"Speaking: {text}")
             self.engine.say(text=text)
             self.engine.runAndWait()
-            print('\n')
+            # print('\n')
         except Exception as error:
-            print(f"speak_say_error: {error}")
+            pass
+            # print(f"speak_say_error: {error}")
 
 # for testing ---------------------------------
 # Speak = Speak()
